@@ -1,0 +1,109 @@
+# this is an example of the Uber API
+# as a demonstration of an API spec in YAML
+swagger: '2.0'
+info:
+  title: Troels resume API
+  description: Provides data for Angular resume website
+  version: "1.0.0"
+# the domain of the service
+host: troelslenda.com
+# array of all schemes that your API supports
+schemes:
+  - https
+# will be prefixed to all paths
+basePath: /api2
+produces:
+  - application/endomondo
+paths:
+  /activities:
+    get:
+      summary: Endomondo Activities
+      description: Activities fetched from Endomondo.
+      tags:
+        - Activity
+      responses:
+        200:
+          description: An array of products
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Activity'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /projects:
+    get:
+      summary: Recent Projects
+      description: The most recent projects worked on.
+      tags:
+        - Project
+      responses:
+        200:
+          description: An array of projects
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Project'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+definitions:
+  Activity:
+    type: object
+    properties:
+      date:
+        type: string
+        description: date of the activity.
+      activity:
+        type: string
+        description: Type of activity, could be ie. Running, Cycling, etc.
+      distance:
+        type: string
+        description: Distance in kilometers.
+      time:
+        type: string
+        description: Duration of activity.
+      highscore:
+        type: string
+        description: Hours clocked on project.
+      official:
+        type: string
+        description: Techonologies used on the project.
+        
+  Project:
+    type: object
+    properties:
+      name:
+        type: string
+        description: The name of the project
+      description:
+        type: string
+        description: Description of project.
+      date_from:
+        type: string
+        description: When did I start on the project.
+      date_to:
+        type: string
+        description: When did i stop on the project.
+      hours:
+        type: array
+        items:
+          type: number
+        description: Hours clocked on project.
+      techonologies:
+        type: array
+        items:
+          type: string
+        description: Techonologies used on the project.
+  Error:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+      fields:
+        type: string
