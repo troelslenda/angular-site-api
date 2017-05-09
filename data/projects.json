@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Ballerup Biblioteker",
+    "dateFrom": "Januar 2015",
+    "dateTo": "Januar 2016",
+    "hours": "0",
+    "technologies": ["Teknologier"],
+    "description": "<p>Beskrivelse.</p>"
+  },
+  {
+    "name": "Samvirke - Coop",
+    "dateFrom": "Januar 2015",
+    "dateTo": "Januar 2016",
+    "hours": "0",
+    "technologies": ["Teknologier"],
+    "description": "<p>Beskrivelse.</p>"
+  },
+  {
+    "name": "Det danske Spejderkorps",
+    "dateFrom": "Januar 2015",
+    "dateTo": "Januar 2016",
+    "hours": [257.57],
+    "technologies": ["Teknologier"],
+    "description": "<p>Beskrivelse.</p>"
+  },
+  {
+    "name": "Novasol Extranet",
+    "dateFrom": "Januar 2015",
+    "dateTo": "Januar 2016",
+    "hours": [103.12, 156.22, 346.43, 0.64, 396.83, 0.17, 114.97],
+    "technologies": ["Drupal 7", "Docker", "Swagger.io", "Neat", "Gulp", "Bourbon", "Neat"],
+    "description": "<p>Beskrivelse.</p>"
+  },
+  {
+    "name": "Danmarks Radio",
+    "dateFrom": "August 2015",
+    "dateTo": "August 2016",
+    "hours": 1203.63,
+    "technologies": ["Drupal 7", "Vagrant", "Bootstrap CSS"],
+    "description": "<p>Danmarks Radio har siden 2012 været i gang med at udskifte deres produktionsplatform for online artikler fra Microsoft CMS til Drupal 7. I processen bistod jeg med sitebyg og komponentudvikling under migrering af bl.a. Viden/Kultur, X-factor, Melodigrandprix mm.</p><p>Opgaven handlede i første omgang om 1 til 1 migrering af indhold og frontend til det nye værktøj, men sideløbende med udviklingen af Drupal værktøjet, var DR i gang med at udvikle en ny frontend. DR Components, en mere moderene og plugable måde at tænke mobile først på, istedet for det nuværende hvor man er nødt til at læse artiklerne på et seperat nyhedssite.</p><p>Som proof of concept på den nye frontend, var jeg en del af holdet der skulle implementere denne frontend på DR Viden.</p>"
+  },
+  {
+    "name": "GoCook - Coop",
+    "dateFrom": "Januar 2015",
+    "dateTo": "Januar 2016",
+    "hours": [42.29, 29.15, 5.91, 14.29, 3.58, 0.57, 77.94, 11.49, 232.17],
+    "technologies": ["Teknologier"],
+    "description": "<p>Beskrivelse.</p>"
+  }
+]

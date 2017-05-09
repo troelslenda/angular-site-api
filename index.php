@@ -8,14 +8,11 @@
 require_once __DIR__ . '/SwaggerServer/vendor/autoload.php';
 
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 use Silex\Application;
 
 $app = new Application();
-
-
 
 $app->GET('/api2/activities', function (Application $app, Request $request) {
 
@@ -24,26 +21,26 @@ $app->GET('/api2/activities', function (Application $app, Request $request) {
   // parameter giving all activities. This is to save bandwidth and should be
   // manually updated after 30 new events or so.
   // @todo find a better solution. DB storage or such.
-  $history = file_get_contents('history.html');
-  $activities = array_merge(getRows($endomondo), getRows($history));
+  $history = file_get_contents('data/history.html');
+  $activities = array_merge(getActivitiesFromHTML($endomondo), getActivitiesFromHTML($history));
+  applyExtras($activities);
 
   if (!empty($activities)) {
     return new JsonResponse(array_values($activities), 200);
   }
-
 });
 
-
 $app->GET('/api2/projects', function (Application $app, Request $request) {
-
-
-  return new Response('How about implementing projectsGet as a GET method ?');
+  return new JsonResponse(json_decode(file_get_contents('data/projects.json')), 200);
 });
 
 
 $app->run();
 
-function getRows($data) {
+/**
+ * Parse HTMÆ from Endomondo and local file.
+ */
+function getActivitiesFromHTML($data) {
   $dom = new DOMDocument();
   $dom->loadHTML($data);
   $data_rows = array();
@@ -61,4 +58,20 @@ function getRows($data) {
     }
   }
   return $data_rows;
+}
+
+/**
+ * Enrich activity date with extras.
+ */
+function applyExtras(&$activities) {
+  $extras = json_decode(file_get_contents('data/activity-extras.json'));
+  foreach ($extras as $extra) {
+    foreach ($activities as &$activity) {
+      if ($activity['date'] == $extra->date && $activity['activity'] == $extra->activity && $activity['distance'] == $extra->distance && $activity['time'] == $extra->time) {
+        // Identical activity found.
+        $activity = array_merge($activity, (array) $extra);
+        continue;
+      }
+    }
+  }
 }
