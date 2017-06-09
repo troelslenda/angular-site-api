@@ -15,6 +15,13 @@ $app->GET('/api2/activities', function(Application $app, Request $request) {
             });
 
 
+$app->GET('/api2/matches', function(Application $app, Request $request) {
+            
+            
+            return new Response('How about implementing matchesGet as a GET method ?');
+            });
+
+
 $app->GET('/api2/projects', function(Application $app, Request $request) {
             
             

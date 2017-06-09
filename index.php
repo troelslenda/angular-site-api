@@ -15,15 +15,15 @@ use Silex\Application;
 $app = new Application();
 
 $app->GET('/activities', function (Application $app, Request $request) {
-
   $endomondo = file_get_contents('https://www.endomondo.com/embed/user/workouts?id=1818981');
   // So far history is just a copy of the endomondo URL above with a size
   // parameter giving all activities. This is to save bandwidth and should be
   // manually updated after 30 new events or so.
   // @todo find a better solution. DB storage or such.
-  $history = file_get_contents('data/history.html');
+  $history = file_get_contents('data/activity-history.html');
   $activities = array_merge(getActivitiesFromHTML($endomondo), getActivitiesFromHTML($history));
-  applyExtras($activities);
+
+  applyExtras($activities, 'activities');
 
   if (!empty($activities)) {
     return new JsonResponse(array_values($activities), 200);
@@ -31,7 +31,13 @@ $app->GET('/activities', function (Application $app, Request $request) {
 });
 
 $app->GET('/projects', function (Application $app, Request $request) {
-  return new JsonResponse(json_decode(file_get_contents('data/projects.json')), 200);
+  $projects = json_decode(file_get_contents('data/projects.json'));
+
+  applyExtras($projects, 'projects');
+
+  if (!empty($projects)) {
+    return new JsonResponse($projects, 200);
+  }
 });
 
 
@@ -42,10 +48,12 @@ $app->run();
  */
 function getActivitiesFromHTML($data) {
   $dom = new DOMDocument();
+
   $dom->loadHTML($data);
   $data_rows = array();
   $rows = $dom->getElementsByTagName('tr');
   foreach ($rows as $row) {
+    /** $@var \DOMDocument $row */
     $cells = $row->getElementsByTagName('td');
     $data_cells = array();
     if (isset($cells->item(0)->nodeValue)) {
@@ -61,17 +69,35 @@ function getActivitiesFromHTML($data) {
 }
 
 /**
- * Enrich activity date with extras.
+ * Enrich data with extras.
  */
-function applyExtras(&$activities) {
-  $extras = json_decode(file_get_contents('data/activity-extras.json'));
-  foreach ($extras as $extra) {
-    foreach ($activities as &$activity) {
-      if ($activity['date'] == $extra->date && $activity['activity'] == $extra->activity && $activity['distance'] == $extra->distance && $activity['time'] == $extra->time) {
-        // Identical activity found.
-        $activity = array_merge($activity, (array) $extra);
-        continue;
+function applyExtras(&$data, $type) {
+  switch ($type) {
+    case 'activities':
+      $extras = json_decode(file_get_contents('data/activity-extras.json'));
+      foreach ($extras as $extra) {
+        foreach ($data as &$activity) {
+          if ($activity['date'] == $extra->date && $activity['activity'] == $extra->activity && $activity['distance'] == $extra->distance && $activity['time'] == $extra->time) {
+            // Identical activity found.
+            $activity = array_merge($activity, (array) $extra);
+            continue;
+          }
+        }
       }
-    }
+      break;
+
+    case 'projects':
+      // Load description from external file.
+      foreach ($data as &$project) {
+        if ($project->_descriptionFile && $content = @file_get_contents('data/projects/' . $project->_descriptionFile)) {
+          $project->description = $content;
+        }
+        unset($project->_descriptionFile);
+        if ($project->_logoFile && $content = @file_get_contents('data/projects/' . $project->_logoFile)) {
+          $project->logo = $content;
+        }
+        unset($project->_logoFile);
+      }
+      break;
   }
 }
