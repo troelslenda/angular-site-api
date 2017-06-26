@@ -4,10 +4,15 @@
     "key": "ballerupbib",
     "logo": "",
     "_logoFile": "ballerupbib.svg",
-    "dateFrom": "Januar 2015",
-    "dateTo": "Januar 2016",
-    "hours": "0",
-    "technologies": ["Drupal 7, Docker"],
+    "dateFrom": "Januar 2017",
+    "dateTo": "Maj 2017",
+    "hours": [
+      158.32,
+      11.30
+    ],
+    "technologies": [
+      "Drupal 7, Docker"
+    ],
     "description": "<p>Beskrivelse.</p>",
     "_descriptionFile": "ballerupbib.html",
     "sticky": 100
@@ -18,10 +23,19 @@
     "url": "http://samvirke.dk/",
     "logo": "",
     "_logoFile": "samvirke.new.svg",
-    "dateFrom": "Januar 2015",
-    "dateTo": "Januar 2016",
-    "hours": "0",
-    "technologies": ["Drupal 8", "Docker"],
+    "dateFrom": "Januar 2017",
+    "dateTo": "Februar 2017",
+    "hours":[
+      2.39,
+      76.95,
+      18.40,
+      1.79,
+      3.99
+    ],
+    "technologies": [
+      "Drupal 8",
+      "Docker"
+    ],
     "description": "<p>Beskrivelse.</p>",
     "_descriptionFile": "samvirke.html",
     "sticky": 200
@@ -32,10 +46,18 @@
     "url": "https://dds.dk/",
     "logo": "",
     "_logoFile": "dds.svg",
-    "dateFrom": "Januar 2015",
-    "dateTo": "Januar 2016",
-    "hours": [257.57],
-    "technologies": ["Drupal 8", "D8: Paragraphs", "Docker", "Bootstrap CSS"],
+    "dateFrom": "September 2016",
+    "dateTo": "December 2016",
+    "hours":[
+      257.57,
+      0.30
+    ],
+    "technologies": [
+      "Drupal 8",
+      "D8: Paragraphs",
+      "Docker",
+      "Bootstrap CSS"
+    ],
     "description": "<p>Beskrivelse.</p>",
     "_descriptionFile": "dds.html",
     "sticky": 300
@@ -43,13 +65,29 @@
   {
     "name": "Novasol Extranet",
     "key": "novasol",
-    "url" : "https://login.novasol.dk/",
+    "url": "https://login.novasol.dk/",
     "logo": "",
     "_logoFile": "novasollogo.svg",
-    "dateFrom": "Januar 2015",
-    "dateTo": "Januar 2016",
-    "hours": [103.12, 156.22, 346.43, 0.64, 396.83, 0.17, 114.97],
-    "technologies": ["Drupal 7", "Docker", "Swagger.io", "Neat", "Gulp", "Bourbon", "Neat"],
+    "dateFrom": "August 2015",
+    "dateTo": "April 2016",
+    "hours":[
+      103.12,
+      156.22,
+      346.43,
+      0.64,
+      396.83,
+      0.17,
+      114.97
+    ],
+    "technologies": [
+      "Drupal 7",
+      "Docker",
+      "Swagger.io",
+      "Neat",
+      "Gulp",
+      "Bourbon",
+      "Neat"
+    ],
     "description": "<p>Beskrivelse.</p>",
     "_descriptionFile": "novasol.html",
     "sticky": 400
@@ -60,10 +98,16 @@
     "url": "https://dr.dk",
     "logo": "",
     "_logoFile": "drlogo.svg",
-    "dateFrom": "August 2015",
-    "dateTo": "August 2016",
-    "hours": [1203.63],
-    "technologies": ["Drupal 7", "Vagrant", "Bootstrap CSS"],
+    "dateFrom": "September 2014",
+    "dateTo": "August 2015",
+    "hours":[
+      1203.63
+    ],
+    "technologies": [
+      "Drupal 7",
+      "Vagrant",
+      "Bootstrap CSS"
+    ],
     "description": "dsdsdsds",
     "_descriptionFile": "dr.html",
     "sticky": 500
@@ -76,8 +120,25 @@
     "_logoFile": "gocook.svg",
     "dateFrom": "Juli 2012",
     "dateTo": "",
-    "hours": [42.29, 29.15, 5.91, 14.29, 3.58, 0.57, 77.94, 11.49, 232.17],
-    "technologies": ["Drupal 7", "jQuery"],
+    "hours":[
+      56.23,
+      3.45,
+      32.82,
+      65.34,
+      42.29,
+      29.15,
+      5.91,
+      14.29,
+      3.58,
+      0.57,
+      77.94,
+      11.49,
+      232.17
+    ],
+    "technologies": [
+      "Drupal 7",
+      "jQuery"
+    ],
     "description": "<p>Beskrivelse.</p>",
     "_descriptionFile": "gocook.html",
     "sticky": 600
