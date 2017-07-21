@@ -1,5 +1,23 @@
 [
   {
+    "name": "Nemo - BankHub",
+    "key": "bankhub",
+    "logo": "",
+    "_logoFile": "dongenergy.svg",
+    "dateFrom": "Januar 2017",
+    "dateTo": "Maj 2017",
+    "hours": [
+      158.32,
+      11.30
+    ],
+    "technologies": [
+      "Laravel", "Vagrant", "Nordea eGateway"
+    ],
+    "description": "<p>Beskrivelse.</p>",
+    "_descriptionFile": "ballerupbib.html",
+    "sticky": 100
+  },
+  {
     "name": "Ballerup Biblioteker",
     "key": "ballerupbib",
     "logo": "",
@@ -11,7 +29,7 @@
       11.30
     ],
     "technologies": [
-      "Drupal 7, Docker"
+      "Drupal 7", "Docker"
     ],
     "description": "<p>Beskrivelse.</p>",
     "_descriptionFile": "ballerupbib.html",
