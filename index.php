@@ -14,7 +14,7 @@ use Silex\Application;
 
 $app = new Application();
 
-$app->GET('/v1/activities', function (Application $app, Request $request) {
+$app->GET('/activities', function (Application $app, Request $request) {
   $endomondo = file_get_contents('https://www.endomondo.com/embed/user/workouts?id=1818981');
   // So far history is just a copy of the endomondo URL above with a size
   // parameter giving all activities. This is to save bandwidth and should be
@@ -30,7 +30,7 @@ $app->GET('/v1/activities', function (Application $app, Request $request) {
   }
 });
 
-$app->GET('/v1/projects', function (Application $app, Request $request) {
+$app->GET('/projects', function (Application $app, Request $request) {
   $projects = json_decode(file_get_contents('data/projects.json'));
 
   applyExtras($projects, 'projects');
